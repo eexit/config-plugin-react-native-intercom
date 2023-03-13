@@ -59,12 +59,6 @@ import com.intercom.reactnative.IntercomModule;
 public class MainNotificationService extends ExpoFirebaseMessagingService {
 
   @Override
-  public void onNewToken(String refreshedToken) {
-    IntercomModule.sendTokenToIntercom(getApplication(), refreshedToken);
-    super.onNewToken(refreshedToken);
-  }
-
-  @Override
   public void onMessageReceived(RemoteMessage remoteMessage) {
     if (IntercomModule.isIntercomPush(remoteMessage)) {
       IntercomModule.handleRemotePushMessage(getApplication(), remoteMessage);
